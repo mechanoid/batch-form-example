@@ -1,0 +1,8 @@
+form(action=`/` method='POST')
+  span= customer.name
+  input(type=text name="street" value=customer.street)
+  input(type=text name="city" value=customer.city)
+  input(type=text name="zipcode" value=customer.zipcode)
+  input(type='hidden' name="name" value=customer.name)
+  input(type='hidden' name="id" value=customer.id)
+  button(type='submit') save

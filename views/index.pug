@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+html(lang="en")
+head
+  meta(charset="UTF-8")
+  meta(name="viewport", content="width=device-width, initial-scale=1.0")
+  meta(http-equiv="X-UA-Compatible", content="ie=edge")
+  title Customers
+  style.
+    td {
+      padding: .5em;
+    }
+
+    .batch-table input, .batch-table button {
+      display: none;
+    }
+
+    .batch-table.active td span, .batch-table.active td a {
+      display: none;
+    }
+
+    .batch-table.active input, .batch-table.active button {
+      display: inline;
+    }
+
+  script(src="https://code.jquery.com/jquery-3.2.0.min.js" integrity="sha256-JAW99MJVpJBGcbzEuXk4Az05s/XyDdBomFqNlM3ic+I=" crossorigin="anonymous" defer)
+  script(src='./scripts/index.js' defer)
+
+body
+  batch-table
+    table.batch-table
+      thead
+        tr
+          th Name
+          th Street
+          th Zipcode
+          th City
+          th
+      tbody
+        for customer in customers
+          tr(data-action=`/` data-method='POST')
+            td= customer.name
+            td
+              span= customer.street
+              input(type=text name="street" value=customer.street)
+            td
+              span= customer.city
+              input(type=text name="city" value=customer.city)
+            td
+              span= customer.zipcode
+              input(type=text name="zipcode" value=customer.zipcode)
+            td
+              a(href=`edit/${customer.id}`) edit
+              input(type='hidden' name="name" value=customer.name)
+              input(type='hidden' name="id" value=customer.id)
+              button save
+
