@@ -41,4 +41,6 @@ class BatchTable extends HTMLElement {
   }
 }
 
-customElements.define('batch-table', BatchTable)
+if (window.customElements && window.customElements.define) {
+  window.customElements.define('batch-table', BatchTable)
+}
